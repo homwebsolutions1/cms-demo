@@ -1,0 +1,7 @@
+[
+  { "name": "Flat White", "description": "Double ristretto, silky steamed milk.", "price": "3.40" },  { "name": "Butter Croissant", "description": "Baked in-house every morning.", "price": "2.80" },
+  { "name": "Oat Latte", "description": "Smooth, creamy and naturally sweet.", "price": "3.60" },
+  { "name": "Almond Danish", "description": "Frangipane, toasted almonds, a dusting of sugar.", "price": "3.20" },
+  { "name": "Cold Brew", "description": "Steeped for 18 hours, served over ice.", "price": "3.50" },
+  { "name": "Sourdough Toastie", "description": "Mature cheddar, ham or mushroom, house pickle.", "price": "6.50" }
+]
