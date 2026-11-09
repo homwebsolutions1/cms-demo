@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morning Grind | Independent Coffee House (Concept)</title>
+  <meta name="description" content="Concept homepage for an independent café, designed by HOM WebSolutions.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --peach: #F5D8C0;
+      --peach-deep: #EBC3A3;
+      --espresso: #231E1C;
+      --espresso-2: #2C2624;
+      --brown: #5B4239;
+      --cream: #F7EEE6;
+      --tan: #E2BFA4;
+      --muted-dark: #6E5A50;
+      --muted-light: #C9B8AD;
+      --line: rgba(247, 238, 230, 0.16);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Figtree", system-ui, sans-serif;
+      color: var(--cream);
+      background: var(--espresso);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { font-weight: 400; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+    p { margin: 0 0 1rem; }
+    :focus-visible { outline: 3px solid var(--tan); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* Banner the client edits (content/banner.json) */
+    .notice {
+      background: var(--brown); color: var(--cream); font-size: 0.9375rem; font-weight: 500;
+      text-align: center; padding: 10px 16px; overflow-wrap: anywhere;
+    }
+    .notice[hidden] { display: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 46px; padding: 0 22px; border-radius: 6px;
+      font: inherit; font-size: 0.9375rem; font-weight: 500; text-decoration: none;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: background-color .2s, color .2s, border-color .2s;
+    }
+    .btn-dark { background: var(--brown); color: var(--cream); }
+    .btn-dark:hover { background: var(--espresso); }
+    .btn-line { border-color: var(--brown); color: var(--brown); }
+    .btn-line:hover { background: var(--brown); color: var(--cream); }
+    .btn-line-light { border-color: var(--muted-light); color: var(--cream); }
+    .btn-line-light:hover { background: var(--cream); color: var(--espresso); }
+
+    /* Header + hero */
+    .hero { background: var(--peach); color: var(--espresso); overflow: hidden; }
+    .nav { display: flex; align-items: center; gap: 24px; height: 76px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--brown); }
+    .logo svg { width: 30px; height: 30px; }
+    .logo span { font-size: 1.05rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+    .nav ul { display: flex; gap: 28px; list-style: none; margin: 0 0 0 auto; padding: 0; }
+    .nav ul a { text-decoration: none; font-size: 0.9375rem; color: var(--brown); }
+    .nav ul a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .nav .btn { min-height: 40px; padding: 0 18px; }
+
+    .hero-grid {
+      display: grid; align-items: center; gap: 40px;
+      padding: 48px 0 80px;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5.6vw, 4rem); color: var(--brown); font-weight: 400; }
+    .hero p { color: var(--muted-dark); max-width: 44ch; margin: 22px 0 30px; font-size: 1.0625rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-media { position: relative; justify-self: center; width: min(460px, 100%); }
+    .hero-media img {
+      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%;
+      box-shadow: 40px 50px 70px -30px rgba(91, 66, 57, 0.55);
+    }
+    .hero-badge {
+      position: absolute; left: -6px; bottom: 30px;
+      background: var(--cream); color: var(--brown);
+      padding: 12px 16px; border-radius: 10px; font-size: 0.875rem; line-height: 1.35;
+      box-shadow: 0 10px 30px -10px rgba(91, 66, 57, 0.4);
+    }
+    .hero-badge strong { display: block; font-size: 1.05rem; font-weight: 600; }
+
+    @media (min-width: 880px) { .hero-grid { grid-template-columns: 1.1fr 1fr; } }
+    .logo span, .nav .btn { white-space: nowrap; }
+    @media (max-width: 760px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+    @media (max-width: 420px) { .logo span { font-size: 0.9rem; letter-spacing: 0.12em; } .nav { gap: 12px; } .nav .btn { padding: 0 14px; } }
+
+    /* Dark feature rows */
+    .features { padding: 96px 0; display: grid; gap: 96px; }
+    .feature { display: grid; gap: 40px; align-items: center; }
+    .feature img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; }
+    .feature h2 { font-size: clamp(2rem, 3.8vw, 2.75rem); color: var(--tan); margin-bottom: 18px; }
+    .feature p { color: var(--muted-light); max-width: 46ch; }
+    .feature .btn { margin-top: 8px; }
+    .eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 14px; display: block; }
+    @media (min-width: 880px) {
+      .feature { grid-template-columns: 1fr 1fr; gap: 72px; }
+      .feature.flip .feature-media { order: 2; }
+    }
+
+    /* Menu */
+    .menu { background: var(--espresso-2); padding: 96px 0; }
+    .menu-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 40px; }
+    .menu-head h2 { font-size: clamp(2rem, 3.8vw, 2.75rem); color: var(--tan); }
+    .menu-head p { color: var(--muted-light); margin: 0; max-width: 40ch; }
+    .menu-grid { display: grid; gap: 0 56px; }
+    @media (min-width: 760px) { .menu-grid { grid-template-columns: 1fr 1fr; } }
+    .menu-item { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .menu-item h3 { font-size: 1.125rem; font-weight: 500; overflow-wrap: anywhere; }
+    .menu-item .price { color: var(--tan); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .menu-item p { grid-column: 1 / -1; color: var(--muted-light); font-size: 0.9375rem; margin: 0; }
+
+    /* Social band + strip */
+    .social { background: var(--brown); padding: 36px 0; }
+    .social .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px 72px; }
+    .social a { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .social svg { width: 34px; height: 34px; fill: none; stroke: var(--cream); stroke-width: 1.6; }
+    .social strong { display: block; font-size: 1.25rem; font-weight: 400; }
+    .social small { color: var(--muted-light); font-size: 0.8125rem; }
+    .strip { display: grid; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 760px) { .strip { grid-template-columns: repeat(4, 1fr); } }
+    .strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+    /* Visit */
+    .visit { padding: 96px 0; text-align: center; }
+    .visit h2 { font-size: clamp(2rem, 3.8vw, 2.75rem); margin-bottom: 48px; }
+    .visit-grid { display: grid; gap: 40px; text-align: left; }
+    @media (min-width: 760px) { .visit-grid { grid-template-columns: repeat(3, 1fr); } }
+    .visit h3 { font-size: 1rem; font-weight: 600; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .visit p, .visit dl { color: var(--muted-light); font-size: 0.9375rem; margin: 0; overflow-wrap: anywhere; }
+    .visit dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; }
+    .visit dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 56px 0 28px; }
+    .foot-grid { display: grid; gap: 32px; }
+    @media (min-width: 760px) { .foot-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+    footer .logo { color: var(--cream); }
+    footer .tagline { color: var(--muted-light); margin: 10px 0 0; font-size: 0.9375rem; }
+    .newsletter label { display: block; margin-bottom: 10px; font-size: 0.9375rem; }
+    .newsletter .row { display: flex; gap: 8px; }
+    .newsletter input {
+      flex: 1; min-width: 0; min-height: 46px; padding: 0 14px; border-radius: 6px;
+      border: 1px solid var(--line); background: transparent; color: var(--cream); font: inherit;
+    }
+    .newsletter input::placeholder { color: var(--muted-light); }
+    .newsletter .btn { background: var(--tan); color: var(--espresso); }
+    .newsletter .btn:hover { background: var(--cream); }
+    .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted-light); font-size: 0.8125rem; }
+  </style>
+</head>
+<body>
+  <div class="notice" id="site-banner" role="status" hidden></div>
+
+  <header class="hero">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main">
+        <a href="#" class="logo" aria-label="Morning Grind home">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 15h18v4a8 8 0 0 1-8 8h-2a8 8 0 0 1-8-8v-4Z"/><path d="M23 17h2a3 3 0 0 1 0 6h-2.5"/><path d="M10 5c-1 1.5 1 2.5 0 4M14 4c-1 1.5 1 2.5 0 4M18 5c-1 1.5 1 2.5 0 4"/>
+          </svg>
+          <span>Morning Grind</span>
+        </a>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#beans">Beans</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+        <a href="#menu" class="btn btn-dark">Order ahead</a>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <h1 data-content="heroHeading">Brewed with care,<br>served with a smile</h1>
+          <p data-content="heroIntro">Small-batch coffee, fresh pastries baked every morning, and a cosy corner to slow down in. Your neighbourhood coffee house.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-dark">See the menu</a>
+            <a href="#visit" class="btn btn-line">Find us</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img id="hero-photo" src="https://images.unsplash.com/photo-1559001724-fbad036dbc9e?w=900&q=80&auto=format&fit=crop" alt="A latte with a leaf pattern in the foam" width="460" height="460">
+          <div class="hero-badge"><strong>Open today</strong>7:30am to 5pm</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap features">
+      <div class="feature" id="beans">
+        <div class="feature-media">
+          <img src="https://images.unsplash.com/photo-1695245503558-5cdb37f49092?w=1000&q=80&auto=format&fit=crop" alt="A kraft paper bag of coffee beans" loading="lazy" width="520" height="390">
+        </div>
+        <div>
+          <span class="eyebrow">Roasted in small batches</span>
+          <h2>Roasted just for you</h2>
+          <p>Our beans are ethically sourced and roasted in small batches every week, so every cup tastes the way it should. Take a bag home and brew Morning Grind in your own kitchen.</p>
+          <a href="#" class="btn btn-line-light">Shop our beans &rarr;</a>
+        </div>
+      </div>
+
+      <div class="feature flip" id="story">
+        <div class="feature-media">
+          <img src="https://images.unsplash.com/photo-1648462908676-8305f0eff8e0?w=1000&q=80&auto=format&fit=crop" alt="The café interior with wooden tables and hanging plants" loading="lazy" width="520" height="390">
+        </div>
+        <div>
+          <span class="eyebrow">Our story</span>
+          <h2>Made for the neighbourhood</h2>
+          <p>Morning Grind started with one espresso machine and a simple idea: great coffee shouldn't feel complicated. Today we're a home from home for early risers, remote workers and weekend wanderers.</p>
+          <p>Pull up a chair, stay as long as you like. The wifi's fast and the refills are friendly.</p>
+          <a href="#visit" class="btn btn-line-light">Come and say hello &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="menu-head">
+          <div>
+            <span class="eyebrow">Today's favourites</span>
+            <h2 id="menu-title">From the counter</h2>
+          </div>
+          <p data-content="menuNote">Oat, almond and soya milk at no extra cost. Ask about our seasonal specials.</p>
+        </div>
+        <div class="menu-grid" id="menu-items">
+          <div class="menu-item"><h3>Flat White</h3><span class="price">£3.40</span><p>Double ristretto, silky steamed milk.</p></div>
+          <div class="menu-item"><h3>Butter Croissant</h3><span class="price">£2.80</span><p>Baked in-house every morning.</p></div>
+          <div class="menu-item"><h3>Oat Latte</h3><span class="price">£3.60</span><p>Smooth, creamy and naturally sweet.</p></div>
+          <div class="menu-item"><h3>Almond Danish</h3><span class="price">£3.20</span><p>Frangipane, toasted almonds, a dusting of sugar.</p></div>
+          <div class="menu-item"><h3>Cold Brew</h3><span class="price">£3.50</span><p>Steeped for 18 hours, served over ice.</p></div>
+          <div class="menu-item"><h3>Sourdough Toastie</h3><span class="price">£6.50</span><p>Mature cheddar, ham or mushroom, house pickle.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social" aria-label="Social media">
+      <div class="wrap">
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+          <span><strong>#morninggrind</strong><small>Share your cup with us</small></span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8Z"/></svg>
+          <span><strong>Follow us</strong><small>@morninggrindcoffee</small></span>
+        </a>
+      </div>
+    </section>
+    <div class="strip">
+      <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?w=600&q=75&auto=format&fit=crop" alt="Coffee surrounded by croissants" loading="lazy" width="300" height="300">
+      <img src="https://images.unsplash.com/photo-1531441059801-fa3f5859e128?w=600&q=75&auto=format&fit=crop" alt="A barista pouring latte art" loading="lazy" width="300" height="300">
+      <img src="https://images.unsplash.com/photo-1650097364104-eef0e54af0da?w=600&q=75&auto=format&fit=crop" alt="A cappuccino with a leaf design" loading="lazy" width="300" height="300">
+      <img src="https://images.unsplash.com/photo-1514066558159-fc8c737ef259?w=600&q=75&auto=format&fit=crop" alt="Milk being poured into an iced coffee" loading="lazy" width="300" height="300">
+    </div>
+
+    <section class="visit wrap" id="visit" aria-labelledby="visit-title">
+      <h2 id="visit-title">Come and visit</h2>
+      <div class="visit-grid">
+        <div>
+          <h3>Find us</h3>
+          <p id="address">12 Market Street<br>Your Town, AB1 2CD</p>
+        </div>
+        <div>
+          <h3>Opening hours</h3>
+          <dl id="hours">
+            <dt>Mon to Fri</dt><dd>7:30 to 17:00</dd>
+            <dt>Saturday</dt><dd>8:00 to 17:00</dd>
+            <dt>Sunday</dt><dd>9:00 to 15:00</dd>
+          </dl>
+        </div>
+        <div>
+          <h3>Get in touch</h3>
+          <p id="contact">hello@morninggrind.example<br>01234 567890</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="#" class="logo" aria-label="Morning Grind home">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 15h18v4a8 8 0 0 1-8 8h-2a8 8 0 0 1-8-8v-4Z"/><path d="M23 17h2a3 3 0 0 1 0 6h-2.5"/><path d="M10 5c-1 1.5 1 2.5 0 4M14 4c-1 1.5 1 2.5 0 4M18 5c-1 1.5 1 2.5 0 4"/>
+            </svg>
+            <span>Morning Grind</span>
+          </a>
+          <p class="tagline">Brewed with care, served with a smile.</p>
+        </div>
+        <form class="newsletter" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed!';">
+          <label for="nl-email">Join our newsletter for new blends and offers</label>
+          <div class="row">
+            <input id="nl-email" type="email" placeholder="Your email" autocomplete="email" required>
+            <button class="btn" type="submit">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="legal">
+        <span>&copy; Morning Grind. A concept by HOM WebSolutions.</span>
+        <span>Privacy &middot; Terms</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/content.js?v=1"></script>
+</body>
+</html>

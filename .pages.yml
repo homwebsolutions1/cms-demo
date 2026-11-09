@@ -1,0 +1,91 @@
+# Pages CMS set-up: what the client can edit, and the names they see in the editor.
+# The names here must match the client guide ("Editing your website").
+media:
+  input: images
+  output: images
+  categories: [image]
+
+settings:
+  hide: true
+
+content:
+  - name: banner
+    label: Banner
+    type: file
+    path: content/banner.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - name: show
+        label: Show the banner
+        type: boolean
+      - name: message
+        label: Banner message
+        type: string
+
+  - name: menu
+    label: Menu
+    type: file
+    path: content/menu.json
+    format: json
+    list: true
+    operations: { delete: false }
+    fields:
+      - name: name
+        label: Item name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: string
+      - name: price
+        label: Price
+        type: string
+
+  - name: details
+    label: Opening hours and contact
+    type: file
+    path: content/details.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - name: address
+        label: Address
+        type: text
+      - name: hours
+        label: Opening hours
+        type: object
+        list: true
+        fields:
+          - name: days
+            label: Days
+            type: string
+          - name: times
+            label: Times
+            type: string
+      - name: email
+        label: Email
+        type: string
+      - name: phone
+        label: Phone
+        type: string
+
+  - name: text
+    label: Page text
+    type: file
+    path: content/text.json
+    format: json
+    operations: { delete: false }
+    fields:
+      - name: heroHeading
+        label: Main heading
+        type: text
+      - name: heroIntro
+        label: Introduction
+        type: text
+      - name: heroPhoto
+        label: Main photo
+        type: image
+      - name: menuNote
+        label: Note next to the menu
+        type: text
